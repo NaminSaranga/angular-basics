@@ -1,0 +1,30 @@
+<app-server></app-server>
+<app-server></app-server>
+
+<div class="container">
+  <button class="btn btn-primary" [disabled]="!allowNewServer">Add</button>
+  <p [innerText]="allowNewServer"></p>
+  <p>{{ allowNewServer }}</p>
+</div>
+<div class="container">
+  <button class="btn btn-warning" (click)="onCreateServer()">
+    Create Server
+  </button>
+  <p>{{ serverCreationStatus }}</p>
+
+  <div class="container">
+    <input
+      type="text"
+      class="form-control"
+      (input)="onUpdateServerName($event)"
+    />
+
+    <p>{{ serverName }}</p>
+    <br />
+  </div>
+
+  <div class="container">
+    <input [(ngModel)] = "serverPort">
+    <p>{{serverPort}}</p>
+  </div>
+</div>
