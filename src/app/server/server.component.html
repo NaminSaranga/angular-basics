@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <p>{{ serverName }} server works on {{ getServerName() }}</p>
+      <p [ngStyle]="{ backgroundColor: getColor() }">
+        {{ serverName }} server works on {{ getServerStatus() }}
+      </p>
     </div>
   </div>
 </div>
-
-
