@@ -1,5 +1,4 @@
-<app-server></app-server>
-<app-server></app-server>
+<app-server *ngFor="let server of servers"></app-server>
 
 <div class="container">
   <button class="btn btn-primary" [disabled]="!allowNewServer">Add</button>
@@ -42,5 +41,49 @@
     <p>{{ username }}</p>
   </div>
 
-  <button [disabled]="!userNameRef.value" (click)="onUserName()">Submit</button>
+  <div>
+    <button [disabled]="!userNameRef.value" (click)="onUserName()">
+      Submit
+    </button>
+  </div>
+
+  <br />
+
+  <div>
+    <button class="btn btn-primary" (click)="onToggleDetails()">
+      Display Details
+    </button>
+
+    <p *ngIf="showSecret">Secret password = tuna</p>
+
+    <div
+      *ngFor="let log of logs"
+      [ngStyle]="{
+        backgroundColor: log >= 5 ? 'blue' : 'transparent'
+      }"
+      [ngClass]="{ greterThanOrEqual5: log >= 5 }"
+    >
+      {{ log }}
+    </div>
+  </div>
+
+  <br />
+
+  <div>
+    <button class="btn btn-primary" (click)="onIndexToggleDetails()">
+      Display Details with using Index
+    </button>
+    <!-- If we use let i = index here, that means i = 0 -->
+    <div
+      *ngFor="let val of vals; let i = index"
+      [ngStyle]="{
+        backgroundColor: i >= 4 ? 'blue' : 'transparent'
+      }"
+      [ngClass]="{ greterThanOrEqual5: i >= 4 }"
+    >
+      {{ val }}
+    </div>
+  </div>
 </div>
+
+<br />

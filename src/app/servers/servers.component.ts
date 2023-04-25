@@ -8,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class ServersComponent implements OnInit {
 
   allowNewServer = false;
-  // serverCreationStatus = 'Not created yet';
-  serverName = '';
+  serverCreationStatus = 'Not created yet';
+  serverName = 'Testserver';
   serverPort = '';
   username = '';
   serverCreated = false;
+  servers = ['Testserver','Testserver 2'];
+  showSecret = false;
+  logs : any= [];
+  vals : any = [];
   
   constructor(){
     setTimeout(()=>{
@@ -22,7 +26,8 @@ export class ServersComponent implements OnInit {
 
   onCreateServer(){
     this.serverCreated = true;
-    // this.serverCreationStatus = 'Server created ' + this.serverName;
+    this.servers.push(this.serverName);
+    this.serverCreationStatus = 'Server created ' + this.serverName;
   }
 
   onUpdateServerName(event : Event){
@@ -31,6 +36,15 @@ export class ServersComponent implements OnInit {
 
   onUserName(){
     this.username = '';
+  }
+
+  onToggleDetails(){
+    this.showSecret = !this.showSecret;
+    this.logs.push(this.logs.length + 1);
+  }
+
+  onIndexToggleDetails(){
+    this.vals.push(this.vals.length + 1);
   }
 
   ngOnInit(){}
